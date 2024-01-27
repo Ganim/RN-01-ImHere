@@ -1,12 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
-import { Text, View, TextInput, TouchableOpacity} from 'react-native';
+import { Text, View, TextInput, TouchableOpacity, FlatList} from 'react-native';
 import { styles } from './styles';
 import { Participant } from '../../components/Participant';
 
 export function Home() {
 
+  const participants = ["Guilherme", "Julle", "Fernando", "Cassia", "Ricardo", "Dandara", "Walleson", "Katia", "Maria"]
   function handleParticipantAdd(){
     console.log('Você clicou no botão de Adicionar')
+  }
+  function handleParticipantRemove(name: string){
+    console.log(`Você clicou em remover o participante ${name}`)
   }
 
   return (
@@ -27,10 +31,27 @@ export function Home() {
         </TouchableOpacity>
         
       </View>
-      <Participant name="Guilherme"/>
-      <Participant name="Wilson"/>
-      <Participant name="Rodrigo"/>
-      <Participant name="Biro"/>
+
+    <FlatList
+      data={participants}
+      keyExtractor={item => item}
+      renderItem={({item})=>(
+        <Participant
+            key={item} 
+            name={item} 
+            onRemove={() => handleParticipantRemove(item)}
+          />
+      )}
+      showsVerticalScrollIndicator={false}
+      ListEmptyComponent={()=>(
+        <Text style={styles.listEmptyText}>
+          Adicione alguem na sua lista de participantes.
+        </Text>
+      )} 
+    />
+
+      
+
       <StatusBar style="auto" />
     </View>
   );

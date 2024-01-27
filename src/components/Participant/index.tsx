@@ -2,7 +2,10 @@
 import { Text, View, TouchableOpacity} from 'react-native';
 import { styles } from './styles';
 
-export function Participant() {
+type Props = {
+  name: string;
+}
+export function Participant({name} : Props) {
 
   function handleParticipantRemove(){
     console.log('Você clicou no botão de Adicionar')
@@ -11,12 +14,16 @@ export function Participant() {
   return (
     <View style={styles.container}>
       
-      <Text style={styles.name}>Guilherme Ganim</Text>
+      <Text style={styles.name}>
+        {name}
+      </Text>
         <TouchableOpacity 
           style={styles.button}
           onPress={handleParticipantRemove}
         >
-          <Text style={styles.buttonText}>-</Text>
+          <Text style={styles.buttonText}>
+            -
+          </Text>
         </TouchableOpacity>
       
     </View>

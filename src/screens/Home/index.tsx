@@ -27,9 +27,10 @@ export function Home() {
         </TouchableOpacity>
         
       </View>
-      <Participant/>
-      <Participant/>
-      <Participant/>
+      <Participant name="Guilherme"/>
+      <Participant name="Wilson"/>
+      <Participant name="Rodrigo"/>
+      <Participant name="Biro"/>
       <StatusBar style="auto" />
     </View>
   );
